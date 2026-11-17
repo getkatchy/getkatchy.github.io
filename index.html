@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katchy · Zoned out in class? We Katch you up.</title>
+<meta name="description" content="Tap “I zoned out” and Katchy recaps the last two minutes of your lecture, then asks you one quick question so it sticks. Join the waitlist.">
+<meta name="theme-color" content="#f6f6f7">
+<link rel="canonical" href="https://vladmtc.github.io/katchy/">
+<meta property="og:title" content="Katchy · Zoned out in class? We Katch you up.">
+<meta property="og:description" content="Tap “I zoned out” and Katchy recaps the last two minutes of your lecture, then asks you one quick question so it sticks. Join the waitlist.">
+<meta property="og:url" content="https://vladmtc.github.io/katchy/">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Katchy home"><span class="tile"><svg width="26" height="26" viewBox="0 0 512 512" aria-hidden="true"><g fill="none" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"><path d="M164 148V364" stroke="#F5A100"/><path d="M348 148L248 256L348 364" stroke="#FFFFFF"/></g></svg></span>Katchy</a>
+    <nav class="links" aria-label="Main"><a href="how.html">How it works</a><a href="science.html">The science</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a><a href="about.html">About</a><a class="pill" href="index.html#join">Join the waitlist</a></nav>
+    <a class="pill" href="index.html#join">Join the waitlist</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Early access · Waitlist open</p>
+      <h1>Zoned out in class? <span class="accent">We Katch you up.</span></h1>
+      <p class="lead">Tap <strong>“I zoned out”</strong> and Katchy recaps the last two minutes of the lecture, then asks you one quick question so it sticks.</p>
+      <div id="join">
+<form class="join waitlist" id="hero-form" novalidate>
+  <h2>Join the waitlist</h2>
+  <p class="small">Get Katchy before everyone else. One email when it's ready, no spam.</p>
+  <div class="row">
+    <div class="field"><label class="hp" for="hero-form-email">Email</label>
+      <input id="hero-form-email" type="email" name="email" placeholder="you@university.it" autocomplete="email" required></div>
+    <button class="pill" type="submit">Get early access</button>
+  </div>
+  <div class="optional"><label class="hp" for="hero-form-uni">University</label>
+    <input id="hero-form-uni" type="text" name="university" placeholder="University (optional)" autocomplete="organization"></div>
+  <label class="consent"><input type="checkbox" name="consent">
+    <span>Email me about Katchy's launch. I've read the <a href="privacy.html">privacy notice</a> and can leave the list any time.</span></label>
+  <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <p class="status" role="status" aria-live="polite"></p>
+</form></div>
+    </div>
+    <div class="hero-art"><svg viewBox="0 0 600 600" role="img" aria-label="A silver ring split into moments of a lecture, with the moment you missed highlighted in amber, and a Katchy coin">
+<defs>
+  <linearGradient id="top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#e3e4ec"/><stop offset="1" stop-color="#c9cad6"/></linearGradient>
+  <linearGradient id="side" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9a9cab"/><stop offset=".35" stop-color="#e9eaf1"/><stop offset=".6" stop-color="#b8bac8"/><stop offset="1" stop-color="#8d8f9e"/></linearGradient>
+  <linearGradient id="amTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset=".5" stop-color="#F5A100"/><stop offset="1" stop-color="#c97f00"/></linearGradient>
+  <linearGradient id="amSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a86a00"/><stop offset=".4" stop-color="#ffbe3d"/><stop offset="1" stop-color="#9c6200"/></linearGradient>
+  <linearGradient id="hole" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a9cab"/><stop offset=".5" stop-color="#c4c6d2"/><stop offset="1" stop-color="#e6e7ee"/></linearGradient>
+  <linearGradient id="coinEdge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7a4f00"/><stop offset=".5" stop-color="#d89000"/><stop offset="1" stop-color="#6b4500"/></linearGradient>
+  <radialGradient id="coinFace" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#ffe2a3"/><stop offset=".45" stop-color="#F5A100"/><stop offset="1" stop-color="#b87400"/></radialGradient>
+  <filter id="blur" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<ellipse cx="300" cy="416" rx="250" ry="70" fill="#000" opacity=".16" filter="url(#blur)"/>
+<clipPath id="holeClip"><ellipse cx="300" cy="318" rx="128" ry="70"/></clipPath>
+<ellipse cx="300" cy="318" rx="128" ry="70" fill="#f6f6f7"/>
+<path clip-path="url(#holeClip)" fill="url(#hole)" d="M172.0,318.0 A128 70 0 0 1 428.0,318.0 L428.0,376.0 A128 70 0 0 0 172.0,376.0 Z"/>
+<path d="M516.1,361.8 A230 128 0 0 1 123.8,400.3 L123.8,458.3 A230 128 0 0 0 516.1,419.8 Z" fill="url(#amSide)"/><path d="M123.8,400.3 A230 128 0 0 1 70.0,318.0 L70.0,376.0 A230 128 0 0 0 123.8,458.3 Z" fill="url(#side)"/><path d="" fill="url(#side)"/>
+<path d="M516.1,361.8 A230 128 0 0 1 123.8,400.3 L201.9,363.0 A128 70 0 0 0 420.3,341.9 Z" fill="url(#amTop)"/><path d="M123.8,400.3 A230 128 0 0 1 280.0,190.5 L288.8,248.3 A128 70 0 0 0 201.9,363.0 Z" fill="url(#top)"/><path d="M280.0,190.5 A230 128 0 0 1 516.1,361.8 L420.3,341.9 A128 70 0 0 0 288.8,248.3 Z" fill="url(#top)"/>
+<ellipse cx="300" cy="318" rx="230" ry="128" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2"/>
+<path d="M416.5 341.3 L519.9 362.8 M519.9 362.8 L519.9 420.8" stroke="#f6f6f7" stroke-width="9" stroke-linecap="butt" fill="none"/><path d="M205.0 361.7 L120.7 402.2 M120.7 402.2 L120.7 460.2" stroke="#f6f6f7" stroke-width="9" stroke-linecap="butt" fill="none"/><path d="M289.2 250.3 L279.6 187.5" stroke="#f6f6f7" stroke-width="9" stroke-linecap="butt" fill="none"/>
+<g transform="translate(436 176) rotate(-14)">
+  <ellipse cx="10" cy="0" rx="58" ry="80" fill="url(#coinEdge)"/>
+  <ellipse cx="0" cy="0" rx="52" ry="80" fill="url(#coinFace)"/>
+  <ellipse cx="0" cy="0" rx="44" ry="70" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2"/>
+  <g transform="translate(-30 -46) scale(.118 .18)" fill="none" stroke-width="64" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M164 148V364" stroke="#013D59"/><path d="M348 148L248 256L348 364" stroke="#013D59"/>
+  </g>
+</g>
+</svg></div>
+  </div>
+</section>
+
+<section class="cols" aria-label="What you get">
+  <div class="wrap">
+    <div class="col">
+      <h3>Two‑Minute<br>Recap</h3><hr>
+      <p>One tap brings back exactly what you missed: the last couple of minutes of the lecture in a few short lines.</p>
+      <a class="more" href="how.html#recap">How the recap works →</a>
+    </div>
+    <div class="col">
+      <h3>One Question<br>That Sticks</h3><hr>
+      <p>Each recap ends with a single question from what the lecturer just said, because testing yourself beats rereading.</p>
+      <a class="more" href="science.html">See the research →</a>
+    </div>
+    <div class="col">
+      <h3>Private<br>by Design</h3><hr>
+      <p>Speech is turned into text on your own device. Katchy never reads your face or your emotions, and nothing goes to your university.</p>
+      <a class="more" href="privacy.html">Read our privacy notice →</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <h2 class="big">From lost to back on track<br>in under a minute.</h2>
+    <p class="sub">No rewinding a two-hour recording the night before the exam.</p>
+    <div class="steps">
+      <div class="step"><h3>Open Katchy in class</h3><p>It follows the lecture and builds a live transcript, in Italian or English.</p></div>
+      <div class="step"><h3>Tap when you drift</h3><p>Hit the big “I zoned out” button the moment you notice you've lost the thread.</p></div>
+      <div class="step"><h3>Read, answer, carry on</h3><p>A short recap and one question. Then you're back with the class, not behind it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band">
+      <div><h2>Be first in line.</h2><p>Early access goes to the waitlist first.</p></div>
+      <a class="pill amber" href="#join">Join the waitlist</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span data-year>2026</span> Katchy · Made by students in Milan</span>
+    <nav aria-label="Footer">
+      <a href="how.html">How it works</a><a href="science.html">The science</a><a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a><a href="about.html">About</a>
+      <a href="https://www.linkedin.com/company/katchy-ai" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </nav>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
