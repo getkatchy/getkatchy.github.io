@@ -21,15 +21,26 @@ const SOURCE = (() => {
 // Count an event in GoatCounter (cookie-free visit stats). Silently does nothing if it's blocked.
 const track = (name, title) => { try { window.goatcounter && window.goatcounter.count({ path: name, title, event: true }); } catch {} };
 
-const send = async (payload) => {
-  const response = await fetch(WAITLIST.endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({ ...payload, source: SOURCE, page: location.pathname, _template: "table" }),
-  });
-  const result = await response.json().catch(() => ({}));
-  if (!response.ok || String(result.success) !== "true") throw new Error(result.message || "failed");
+// FormSubmit is slow (30–60 s) and sometimes answers with a temporary "Server Error",
+// so a failed send is retried once automatically before the visitor sees an error.
+const send = async (payload, onRetry) => {
+  const attempt = async () => {
+    const response = await fetch(WAITLIST.endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ ...payload, source: SOURCE, page: location.pathname, _template: "table" }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || String(result.success) !== "true") throw new Error(result.message || "failed");
+  };
+  try { await attempt(); }
+  catch (e) {
+    if (/activation/i.test(e.message)) throw e; // not temporary: retrying won't help
+    if (onRetry) onRetry();
+    await attempt();
+  }
 };
+const retryMsg = (say) => () => say("Almost there… the form service was busy, trying once more. Please keep this page open.");
 const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
 // Personal invite code: short and stable per email (same email → same code), e.g. "f-k3x9qa".
@@ -75,7 +86,7 @@ document.querySelectorAll("form.waitlist").forEach((form) => {
     const slow = setTimeout(() => say("Still sending… this can take up to a minute. Please keep this page open."), 6000);
     try {
       const code = inviteCode(email);
-      await send({ _subject: "New Katchy waitlist signup", type: "waitlist", email, university: String(data.get("university") || "").trim() || "(not given)", consent: "yes", invite_code: code });
+      await send({ _subject: "New Katchy waitlist signup", type: "waitlist", email, university: String(data.get("university") || "").trim() || "(not given)", consent: "yes", invite_code: code }, retryMsg(say));
       clearTimeout(slow);
       remember("kcode", code);
       track("event-signup", "Waitlist signup (" + SOURCE + ")");
@@ -125,7 +136,7 @@ document.querySelectorAll("form.survey").forEach((form) => {
         email: email || "(not given)",
         consent: email ? "yes" : "no",
         invite_code: email ? inviteCode(email) : "(none)",
-      });
+      }, retryMsg(say));
       clearTimeout(slow);
       if (email) remember("kcode", inviteCode(email));
       track("event-survey", "Survey answered (" + SOURCE + ")");
