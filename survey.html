@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>60-second survey · Katchy</title>
+<meta name="description" content="Five quick questions about zoning out in lectures. Help us build Katchy right.">
+<meta name="theme-color" content="#f6f6f7">
+<link rel="canonical" href="https://getkatchy.github.io/survey.html">
+<meta property="og:title" content="60-second survey · Katchy">
+<meta property="og:description" content="Five quick questions about zoning out in lectures. Help us build Katchy right.">
+<meta property="og:url" content="https://getkatchy.github.io/survey.html">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Katchy home"><span class="tile"><svg width="26" height="26" viewBox="0 0 512 512" aria-hidden="true"><g fill="none" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"><path d="M164 148V364" stroke="#F5A100"/><path d="M348 148L248 256L348 364" stroke="#FFFFFF"/></g></svg></span>Katchy</a>
+    <nav class="links" aria-label="Main"><a href="how.html">How it works</a><a href="science.html">The science</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a><a href="about.html">About</a><a class="pill" href="index.html#join">Join the waitlist</a></nav>
+    <a class="pill" href="index.html#join">Join the waitlist</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">60 seconds · 5 questions</p>
+    <h1>Do you zone out in lectures?</h1>
+    <p class="lead">Help us find out how common it is and what would actually help. Anonymous unless you choose to leave your email.</p>
+  </div>
+  <form class="survey join" id="survey" novalidate>
+    
+  <fieldset class="q"><legend>1. How often do you zone out during a lecture?</legend>
+    <div class="opts"><label class="opt"><input type="radio" name="zone_out" value="In almost every lecture" required><span>In almost every lecture</span></label><label class="opt"><input type="radio" name="zone_out" value="In most lectures"><span>In most lectures</span></label><label class="opt"><input type="radio" name="zone_out" value="Sometimes"><span>Sometimes</span></label><label class="opt"><input type="radio" name="zone_out" value="Rarely or never"><span>Rarely or never</span></label></div>
+  </fieldset>
+    
+  <fieldset class="q"><legend>2. When you realise you missed something, what do you usually do?</legend>
+    <div class="opts"><label class="opt"><input type="radio" name="what_now" value="Ask a friend next to me" required><span>Ask a friend next to me</span></label><label class="opt"><input type="radio" name="what_now" value="Check the slides or recording later"><span>Check the slides or recording later</span></label><label class="opt"><input type="radio" name="what_now" value="Search or ask AI later"><span>Search or ask AI later</span></label><label class="opt"><input type="radio" name="what_now" value="Nothing, I just lose that part"><span>Nothing, I just lose that part</span></label></div>
+  </fieldset>
+    
+  <fieldset class="q"><legend>3. How much does missing parts of lectures cost you?</legend>
+    <div class="opts"><label class="opt"><input type="radio" name="impact" value="It hurts my grades or exam prep" required><span>It hurts my grades or exam prep</span></label><label class="opt"><input type="radio" name="impact" value="It's annoying, I catch up later"><span>It's annoying, I catch up later</span></label><label class="opt"><input type="radio" name="impact" value="Not really a problem"><span>Not really a problem</span></label></div>
+  </fieldset>
+    
+  <fieldset class="q"><legend>4. Would you use an app where one tap recaps the last 2 minutes of the lecture?</legend>
+    <div class="opts"><label class="opt"><input type="radio" name="would_use" value="Definitely" required><span>Definitely</span></label><label class="opt"><input type="radio" name="would_use" value="Probably"><span>Probably</span></label><label class="opt"><input type="radio" name="would_use" value="Not sure"><span>Not sure</span></label><label class="opt"><input type="radio" name="would_use" value="No"><span>No</span></label></div>
+  </fieldset>
+    
+  <fieldset class="q"><legend>5. What would you pay for it?</legend>
+    <div class="opts"><label class="opt"><input type="radio" name="pay" value="Only if it's free" required><span>Only if it's free</span></label><label class="opt"><input type="radio" name="pay" value="Up to €2.99 a month"><span>Up to €2.99 a month</span></label><label class="opt"><input type="radio" name="pay" value="Up to €4.99 a month"><span>Up to €4.99 a month</span></label><label class="opt"><input type="radio" name="pay" value="€5+ a month"><span>€5+ a month</span></label></div>
+  </fieldset>
+    <fieldset class="q"><legend>Optional</legend>
+      <div class="row"><div class="field"><input type="text" name="university" placeholder="University and year (e.g. Bocconi, BIEM 2nd)" autocomplete="organization"></div></div>
+      <div class="row" style="margin-top:10px"><div class="field"><input type="email" name="email" placeholder="Email, to join the waitlist (optional)" autocomplete="email"></div></div>
+      <label class="consent"><input type="checkbox" name="consent">
+        <span>Add me to the waitlist and email me about Katchy's launch. I've read the <a href="privacy.html">privacy notice</a>.</span></label>
+    </fieldset>
+    <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="pill" type="submit">Send my answers</button>
+    <p class="status" role="status" aria-live="polite"></p>
+  </form>
+  <div class="msg survey-done" hidden><div>
+    <div class="badge"><svg width="52" height="52" viewBox="0 0 512 512" aria-hidden="true"><g fill="none" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"><path d="M164 148V364" stroke="#F5A100"/><path d="M348 148L248 256L348 364" stroke="#FFFFFF"/></g></svg></div>
+    <p class="eyebrow">Thank you</p>
+    <h1>That really helps. 🙏</h1>
+    <p class="lead">Know someone who zones out in lectures too? Send them this survey. Every answer counts.</p>
+    <div class="actions"><a class="pill" href="index.html">See what Katchy is</a><button class="ghost share" type="button">Copy survey link</button></div>
+  </div></div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span data-year>2026</span> Katchy · Made by students in Milan</span>
+    <nav aria-label="Footer">
+      <a href="how.html">How it works</a><a href="science.html">The science</a><a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a><a href="about.html">About</a><a href="survey.html">Quick survey</a>
+      <a href="https://www.linkedin.com/company/katchy-ai" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </nav>
+  </div>
+</footer>
+<script data-goatcounter="https://getkatchy.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script src="main.js?v=5"></script>
+</body>
+</html>
