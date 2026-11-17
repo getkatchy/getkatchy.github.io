@@ -32,6 +32,16 @@ const send = async (payload) => {
 };
 const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
+// Personal invite code: short and stable per email (same email → same code), e.g. "f-k3x9qa".
+// It's included in the signup email, so the team can see who owns which code.
+const inviteCode = (email) => {
+  let h = 2166136261;
+  for (const ch of email.trim().toLowerCase()) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; }
+  return "f-" + h.toString(36).padStart(6, "0").slice(-6);
+};
+const remember = (k, v) => { try { sessionStorage.setItem(k, v); } catch {} };
+const recall = (k) => { try { return sessionStorage.getItem(k); } catch { return null; } };
+
 // Mobile menu
 const nav = document.querySelector(".nav");
 const menuBtn = document.querySelector(".menu-btn");
@@ -64,8 +74,10 @@ document.querySelectorAll("form.waitlist").forEach((form) => {
     say("Adding you to the list…");
     const slow = setTimeout(() => say("Still sending… this can take up to a minute. Please keep this page open."), 6000);
     try {
-      await send({ _subject: "New Katchy waitlist signup", type: "waitlist", email, university: String(data.get("university") || "").trim() || "(not given)", consent: "yes" });
+      const code = inviteCode(email);
+      await send({ _subject: "New Katchy waitlist signup", type: "waitlist", email, university: String(data.get("university") || "").trim() || "(not given)", consent: "yes", invite_code: code });
       clearTimeout(slow);
+      remember("kcode", code);
       track("event-signup", "Waitlist signup (" + SOURCE + ")");
       location.href = "thanks.html";
     } catch {
@@ -112,8 +124,10 @@ document.querySelectorAll("form.survey").forEach((form) => {
         university: String(data.get("university") || "").trim() || "(not given)",
         email: email || "(not given)",
         consent: email ? "yes" : "no",
+        invite_code: email ? inviteCode(email) : "(none)",
       });
       clearTimeout(slow);
+      if (email) remember("kcode", inviteCode(email));
       track("event-survey", "Survey answered (" + SOURCE + ")");
       if (email) track("event-signup", "Waitlist signup via survey (" + SOURCE + ")");
       document.querySelector(".page-head").hidden = true;
@@ -128,7 +142,38 @@ document.querySelectorAll("form.survey").forEach((form) => {
   });
 
   done?.querySelector(".share")?.addEventListener("click", async (e) => {
-    const url = location.origin + "/survey.html?ref=share";
+    track("event-share-survey", "Survey link copied");
+    const url = location.origin + "/survey.html?ref=" + (recall("kcode") || "share");
     try { await navigator.clipboard.writeText(url); e.target.textContent = "Link copied ✓"; } catch { e.target.textContent = url; }
   });
+});
+
+// Invite box on the thank-you page: personal link + copy / WhatsApp / native share
+document.querySelectorAll(".invite").forEach((box) => {
+  const code = recall("kcode") || "share";
+  const link = location.origin + "/?ref=" + code;
+  const input = box.querySelector(".invite-link");
+  input.value = link;
+  input.addEventListener("focus", () => input.select());
+  const msg = "I just joined the waitlist for Katchy: one tap and it recaps what you missed when you zone out in a lecture 🎓 Join here: " + link;
+
+  box.querySelector(".copy-invite").addEventListener("click", async (e) => {
+    track("event-invite-copy", "Invite link copied");
+    try { await navigator.clipboard.writeText(link); e.target.textContent = "Copied ✓"; }
+    catch { input.focus(); input.select(); e.target.textContent = "Press Ctrl+C"; }
+    setTimeout(() => (e.target.textContent = "Copy link"), 2500);
+  });
+
+  const wa = box.querySelector(".wa-share");
+  wa.href = "https://wa.me/?text=" + encodeURIComponent(msg);
+  wa.addEventListener("click", () => track("event-invite-whatsapp", "Invite shared on WhatsApp"));
+
+  const native = box.querySelector(".native-share");
+  if (navigator.share) {
+    native.hidden = false;
+    native.addEventListener("click", async () => {
+      track("event-invite-native", "Invite shared (phone share sheet)");
+      try { await navigator.share({ title: "Katchy", text: msg.replace(link, "").trim(), url: link }); } catch {}
+    });
+  }
 });

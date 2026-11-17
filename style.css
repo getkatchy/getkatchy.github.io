@@ -121,6 +121,13 @@ form.survey{max-width:720px;margin:10px 0 90px;padding:28px}
 form.survey .pill{margin-top:6px}
 .survey-done{min-height:auto;padding:60px 0 90px}
 
+/* ---------- invite (thank-you page) ---------- */
+.invite{margin:8px auto 18px;text-align:left}
+.invite .invite-link{font-size:14.5px;color:var(--ink-2);background:var(--bg)}
+.share-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.share-row .ghost{cursor:pointer;font-family:inherit}
+.after-invite{margin:0}
+
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--line);padding:34px 0;font-size:14px;color:var(--ink-3)}
 footer .wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
