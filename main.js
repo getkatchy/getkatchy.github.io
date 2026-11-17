@@ -1,10 +1,7 @@
 // Waitlist: signups are sent by FormSubmit (formsubmit.co) to the team inbox.
-// After the inbox owner clicks FormSubmit's one-time activation email, every
-// signup arrives as an email. FormSubmit's activation email also offers a random
-// alias; swap it in for the address below to keep the inbox out of the page source.
+// The endpoint uses FormSubmit's private alias, so no email address is in the page source.
 const WAITLIST = {
-  endpoint: "https://formsubmit.co/ajax/vlad.matache2008@gmail.com",
-  inbox: "vlad.matache2008@gmail.com", // used by the "join by email" fallback
+  endpoint: "https://formsubmit.co/ajax/3ad5dcd16e3015559be82a9ac7de8033",
 };
 
 // Mobile menu
@@ -67,18 +64,8 @@ document.querySelectorAll("form.waitlist").forEach((form) => {
       location.href = "thanks.html";
     } catch {
       clearTimeout(slow);
-      // Fallback so nobody is turned away: join by email instead.
-      const subject = encodeURIComponent("Add me to the Katchy waitlist");
-      const bodyText = encodeURIComponent(
-        `Hi Katchy team,\n\nPlease add me to the waitlist.\n\nEmail: ${email}\nUniversity: ${String(data.get("university") || "").trim() || "-"}\n\nI agree to receive emails about Katchy's launch.`
-      );
-      status.className = "status err";
-      status.textContent = "The form couldn't send that just now. ";
-      const link = document.createElement("a");
-      link.href = `mailto:${WAITLIST.inbox}?subject=${subject}&body=${bodyText}`;
-      link.textContent = "Join by email instead →";
-      link.style.fontWeight = "700";
-      status.appendChild(link);
+      say("The form couldn't send that just now. Please try again in a minute.", "err");
+      button.textContent = "Try again";
       button.disabled = false;
     }
   });
