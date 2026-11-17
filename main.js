@@ -110,6 +110,13 @@ document.querySelectorAll("form.survey").forEach((form) => {
   form.addEventListener("change", (e) => e.target.closest("fieldset.q")?.classList.remove("missing"));
   track("event-survey-open", "Survey opened (" + SOURCE + ")");
 
+  // Arrived from the home-page teaser (survey.html#q1=2): pre-select that answer and move on to question 2.
+  const pre = /q1=([0-3])/.exec(location.hash);
+  if (pre) {
+    const r = form.querySelectorAll("input[name=zone_out]")[+pre[1]];
+    if (r) { r.checked = true; track("event-survey-teaser", "Survey started from home page"); setTimeout(() => questions[1]?.scrollIntoView({ behavior: "smooth", block: "center" }), 300); }
+  }
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const data = new FormData(form);
