@@ -46,6 +46,7 @@ document.querySelectorAll("form.waitlist").forEach((form) => {
 
     button.disabled = true;
     say("Adding you to the list…");
+    const slow = setTimeout(() => say("Still sending… this can take up to a minute. Please keep this page open."), 6000);
     try {
       const response = await fetch(WAITLIST.endpoint, {
         method: "POST",
@@ -60,9 +61,11 @@ document.querySelectorAll("form.waitlist").forEach((form) => {
         }),
       });
       const result = await response.json().catch(() => ({}));
+      clearTimeout(slow);
       if (!response.ok || String(result.success) !== "true") throw new Error(result.message || "failed");
       location.href = "thanks.html";
     } catch {
+      clearTimeout(slow);
       say("That didn't go through. Check your connection and try again in a minute.", "err");
       button.disabled = false;
     }
